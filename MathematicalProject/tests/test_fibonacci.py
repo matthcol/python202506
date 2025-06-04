@@ -36,6 +36,8 @@ def test_fibo_ko(n: int):
 @pytest.mark.parametrize(
         ["n", "expected_value"],
         [
+            (-1, []),
+            (0, []),
             (1, [0]),
             (2, [0, 1]),
             (3, [0, 1, 1]),
