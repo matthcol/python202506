@@ -21,7 +21,8 @@ def test_fibo_ok(n: int, expected_value: int):
     actual_value = fibo(n)
     assert expected_value == actual_value
 
-
+def test_fibo_default():
+    assert 34 == fibo(10)
 
 @pytest.mark.parametrize(
         "n",
@@ -30,7 +31,7 @@ def test_fibo_ok(n: int, expected_value: int):
 def test_fibo_ko(n: int):
     with pytest.raises(ValueError) as ex_info:
         _ = fibo(n)
-    assert "argument must be stritcly positive" == str(ex_info.value)
+    assert "argument must be strictly positive" == str(ex_info.value)
 
 
 @pytest.mark.parametrize(
