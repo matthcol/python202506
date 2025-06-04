@@ -53,3 +53,6 @@ def test_fibo_ko(n: int):
 def test_fibo_list_ok(n: int, expected_value: list[int]):
     actual_value = fibo_list(n)
     assert expected_value == actual_value
+
+def test_fibo_list_default():
+    [0, 1, 1, 2, 3, 5, 8, 13, 21, 33, 55] == fibo_list()
