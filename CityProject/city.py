@@ -1,5 +1,6 @@
 # module city
 from dataclasses import dataclass, field
+import math
 
 # NB: dataclass since python 3.6
 # or pydantic (used by fastapi): + constraints + serialization JSON
@@ -12,6 +13,7 @@ class City:
     name: str
     population: int | None = field(default=None, repr=False)
     zipcode: str | None = None
+    area: float = field(default=math.nan, repr=False)
 
     # implements builtin function str
     def __str__(self) -> str:
@@ -34,3 +36,17 @@ class City:
                 return self.zipcode[:3]
             case _ as code2:
                 return code2
+            
+
+@dataclass
+class CityWithAirport(City):
+    airport: str = "AIRPORT"
+
+    @classmethod
+    def from_city_and_airport(cls, city: City, airport: str) -> 'CityWithAirport':
+        return cls(
+            name=city.name, 
+            population=city.population, 
+            zipcode=city.zipcode,
+            airport=airport
+        )
